@@ -904,27 +904,9 @@ pub const random_support_silver_ratio_64: i64 = 7_640_891_576_950_612_809;
 
 // Numeric literals used as fixed parameters by RandomSupport.
 
-pub const random_support_mix_stafford_13_first_shift: i32 = 30;
-
-pub const random_support_mix_stafford_13_first_multiplier: i64 = -4_658_895_280_553_007_687;
-
-pub const random_support_mix_stafford_13_second_shift: i32 = 27;
-
-pub const random_support_mix_stafford_13_second_multiplier: i64 = -7_723_592_293_110_705_685;
-
-pub const random_support_mix_stafford_13_final_shift: i32 = 31;
-
 pub const random_support_seed_uniquifier_multiplier: i64 = 1_181_783_497_276_652_981;
 
 // Numeric literals used as fixed parameters by Xoroshiro128PlusPlus.
-
-pub const xoroshiro_result_rotate_left: i32 = 17;
-
-pub const xoroshiro_seed_lo_rotate_left: i32 = 49;
-
-pub const xoroshiro_seed_lo_shift_left: i32 = 21;
-
-pub const xoroshiro_seed_hi_rotate_left: i32 = 28;
 
 pub const xoroshiro_unsigned_int_mask: i64 = 4_294_967_295;
 

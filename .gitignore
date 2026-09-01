@@ -1,5 +1,9 @@
 *.*
-javaSrc/
+java/
+zig-cache/
+# worldgen_source_subset/
+src/Archive
+.gitignore
+!*.java
 !*.zig
 !*.zon
-!.gitignor

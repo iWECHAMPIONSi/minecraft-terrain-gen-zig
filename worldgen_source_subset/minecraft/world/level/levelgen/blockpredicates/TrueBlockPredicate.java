@@ -1,0 +1,28 @@
+package net.minecraft.world.level.levelgen.blockpredicates;
+
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.WorldGenLevel;
+
+public class TrueBlockPredicate implements BlockPredicate {
+   public static final TrueBlockPredicate INSTANCE = new TrueBlockPredicate();
+   public static final MapCodec<TrueBlockPredicate> CODEC = MapCodec.unit(() -> INSTANCE);
+
+   private TrueBlockPredicate() {
+      super();
+   }
+
+   public boolean test(final WorldGenLevel level, final BlockPos origin) {
+      return true;
+   }
+
+   public BlockPredicateType<?> type() {
+      return BlockPredicateType.TRUE;
+   }
+
+   // $FF: synthetic method
+   // $FF: bridge method
+   public boolean test(final Object level, final Object origin) {
+      return this.test((WorldGenLevel)level, (BlockPos)origin);
+   }
+}
