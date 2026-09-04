@@ -4,6 +4,7 @@ zig-cache/
 # worldgen_source_subset/
 src/Archive
 .gitignore
+worldgen_source_subset/
 !*.java
 !*.zig
 !*.zon
