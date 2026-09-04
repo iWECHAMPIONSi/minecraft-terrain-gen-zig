@@ -3,8 +3,9 @@ java/
 zig-cache/
 # worldgen_source_subset/
 src/Archive
+zig-cache/
 .gitignore
+zig-out/
 worldgen_source_subset/
-!*.java
 !*.zig
 !*.zon
