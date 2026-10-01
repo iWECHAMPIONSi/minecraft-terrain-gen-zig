@@ -29,3 +29,9 @@ pub fn smoothstepDerivative(x: f64) f64 {
 pub fn rotateLeftI64(l: i64, b: i32) i64 {
     return @bitCast(std.math.rotl(u64, @bitCast(l), b));
 }
+
+pub fn getSeed(x: i32, y: i32, z: i32) i64 {
+    var seed: i64 = @as(i64, x *% 3129871) ^ @as(i64, z) *% 11629781 ^ @as(i64, y);
+    seed = seed *% seed *% 423167861 +% seed *% 11;
+    return seed >> 16;
+}

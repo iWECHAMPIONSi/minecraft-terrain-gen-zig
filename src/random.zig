@@ -76,8 +76,12 @@ pub const Xoroshiro = struct {
         return @as(f64, @floatFromInt(self.nextBits(53))) * 1.110223E-16;
     }
 
-    pub fn forkPositional(self: *Self) Self {
+    pub fn fork(self: *Self) Self {
         return self.init(self.nextI64(), self.nextI64());
+    }
+
+    pub fn forkPositional(self: *Self) XoroshiroFactory {
+        return XoroshiroFactory.init(self.nextI64(), self.nextI64());
     }
 };
 
@@ -93,6 +97,8 @@ pub const XoroshiroFactory = struct {
         }
         return Self{ .seed_lo = seed_lo, .seed_hi = seed_hi };
     }
+
+    // pub fn
 };
 
 pub const RandomType = enum {
