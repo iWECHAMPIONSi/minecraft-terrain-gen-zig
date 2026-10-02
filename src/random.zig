@@ -83,6 +83,13 @@ pub const Xoroshiro = struct {
     pub fn forkPositional(self: *Self) XoroshiroFactory {
         return XoroshiroFactory.init(self.nextI64(), self.nextI64());
     }
+
+    pub fn consumeCount(self: *Self, rounds: i32) void {
+        var i = 0;
+        while (i < rounds) : (i += 1) {
+            self.nextF64();
+        }
+    }
 };
 
 pub const XoroshiroFactory = struct {
@@ -98,7 +105,21 @@ pub const XoroshiroFactory = struct {
         return Self{ .seed_lo = seed_lo, .seed_hi = seed_hi };
     }
 
-    // pub fn
+    pub fn at(self: *Self, x: i32, y: i32, z: i32) Xoroshiro {
+        const positonal_seed: i64 = mth.getSeed(x, y, z);
+        const random_seed: i64 = positonal_seed ^ self.seed_lo;
+        return .{ .seed_lo = random_seed, .seed_hi = self.seed_hi };
+    }
+
+    pub fn fromHashOf(self: *Self, name: []const u8) Xoroshiro {
+        const seed: Seed128Bit = Seed128Bit.initFromHashOf(name);
+        xorSeed128BitSplit(&seed, self.seed_lo, self.seed_hi);
+        return Xoroshiro.initFromSeed128Bit(seed);
+    }
+
+    pub fn fromSeed(self: *Self, seed: i64) Xoroshiro {
+        return Xoroshiro.init(seed ^ self.seed_lo, seed ^ self.seed_hi);
+    }
 };
 
 pub const RandomType = enum {
@@ -181,6 +202,11 @@ pub fn mixSeed128Bit(seed: *Seed128Bit) void {
 pub fn xorSeed128Bit(seed: *Seed128Bit, other: Seed128Bit) void {
     seed.seed_lo ^= other.seed_lo;
     seed.seed_hi ^= other.seed_hi;
+}
+
+pub fn xorSeed128BitSplit(seed: *Seed128Bit, seed_lo: i64, seed_hi: i64) void {
+    seed.seed_lo ^= seed_lo;
+    seed.seed_hi ^= seed_hi;
 }
 
 test "hash" {

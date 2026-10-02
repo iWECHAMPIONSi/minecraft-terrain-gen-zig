@@ -1,4 +1,1 @@
-pub const StdErr = error{
-    MemoryAllocationFail,
-    InvalidParameter,
-};
+pub const StdErr = error{ MemoryAllocationFail, InvalidParameter, InvalidState };
